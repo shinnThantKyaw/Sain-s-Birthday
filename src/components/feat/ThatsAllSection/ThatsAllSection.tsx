@@ -12,7 +12,7 @@ export default function ThatsAllSection() {
             transition={{ delay: 1 }}
         >
             <h1 className="font-semibold font-romantic text-2xl text-center text-pink-600 max-w-2xl px-4">
-                That's all! I hope you like it my little Sain. Arr Bwarr... 😚❤️
+                {`That's all! I hope you like it my little Sain. Arr Bwarr... 😚❤️`}
             </h1>
 
             <motion.div

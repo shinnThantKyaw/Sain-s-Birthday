@@ -58,7 +58,7 @@ export default function BirthdayGirlPics() {
             transition={{ delay: 0.8 }}
         >
             <h1 className="font-semibold font-romantic text-2xl text-center  text-pink-600">
-                Here's my beautiful birthday girl ❤️
+                Here is my beautiful birthday girl ❤️
             </h1>
 
             <section
