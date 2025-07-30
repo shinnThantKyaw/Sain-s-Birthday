@@ -2,7 +2,7 @@
 
 import {Pause, Play} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
+import { motion } from "framer-motion";
 
 export default function MusicPlayer() {
     const musicRef = useRef<HTMLAudioElement>(null);
@@ -22,7 +22,6 @@ export default function MusicPlayer() {
         setHasMounted(true);
     }, []);
 
-
     useEffect(() => {
         const music = musicRef.current;
 
@@ -31,15 +30,13 @@ export default function MusicPlayer() {
             return ;
         }
 
-
         handleClickPlay()
 
         return () => {
-           handleClickPause()
+            handleClickPause()
             music.currentTime = 0;
         };
     }, [hasMounted]);
-
 
     if (!hasMounted) return null;
 
@@ -49,9 +46,15 @@ export default function MusicPlayer() {
                 <source src="/music/violin.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
-            <button className={"fixed top-2 right-5"} onClick={isPlaying?handleClickPause:handleClickPlay}>
-                {isPlaying?<Pause />:<Play />}
-            </button>
+            <motion.button
+                className="fixed top-5 right-5 z-50 bg-pink-100/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-pink-200 transition-colors"
+                onClick={isPlaying ? handleClickPause : handleClickPlay}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label={isPlaying ? "Pause music" : "Play music"}
+            >
+                {isPlaying ? <Pause className="text-pink-700" /> : <Play className="text-pink-700" />}
+            </motion.button>
         </section>
     );
 }

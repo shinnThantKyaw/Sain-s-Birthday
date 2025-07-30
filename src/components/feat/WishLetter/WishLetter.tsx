@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion,AnimatePresence  } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 
@@ -9,7 +9,7 @@ export default function WishLetter() {
     const [typedText, setTypedText] = useState('');
     const [skip, setSkip] = useState(false);
 
-    const fullText = `Dear [Her Name],\n\nYou're the most special part of my life. 💚\nWishing you a day filled with joy and love.\n\n— With Love 💝`;
+    const fullText = `Dear Sain,\n\nYou're the most special part of my life. 💚\nWishing you a day filled with joy, love,\nand all the happiness you deserve.\n\nMay this year bring you closer to your dreams\nand fill your days with laughter.\n\n— With all my love 💝`;
 
     useEffect(() => {
         if (skip) {
@@ -24,7 +24,7 @@ export default function WishLetter() {
             setTypedText((prev) => prev + fullText[i-1]);
             i++;
             if (i >= fullText.length) clearInterval(interval);
-        }, 85);
+        }, 50);
 
         return () => clearInterval(interval);
     }, [open, skip, fullText]);
@@ -36,63 +36,71 @@ export default function WishLetter() {
     };
 
     return (
-        <div className="text-center mt-20">
-            <article className="w-full max-w-md h-auto min-h-[70vh] sm:h-[85vh] bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col justify-center items-center gap-6 sm:gap-8 relative overflow-hidden border-2 border-pink-100">
-
-            {!open && (
-                <>
-                    <h1 className="font-semibold font-romantic text-xl text-center mb-5">
-                        Here is my wish for you, my little Sain.
-                    </h1>
-                    <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setOpen(true)}
-                        className="px-4 py-2 bg-green-500 text-white rounded-full"
-                        aria-label="Open love letter"
-                    >
-                        Open Letter 💌
-                    </motion.button>
-                </>
-            )}
-
-            <AnimatePresence>
-                {open && (
+        <div className="text-center w-[90vw] mt-10">
+            <motion.article
+                className="w-full max-w-md h-auto min-h-[50vh] sm:h-[85vh] bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col justify-center items-center gap-6 sm:gap-8 relative overflow-hidden border-2 border-pink-100"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+            >
+                {!open && (
                     <motion.div
-                        key="letter"
-                        initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -50, scale: 0.8 }}
-                        transition={{ duration: 0.6, type: 'spring' }}
-                        className="relative mt-6 bg-white p-6 rounded-2xl shadow-xl w-[80vw] mx-auto" // Fixed width here
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label="Love letter"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
                     >
-                        <button
-                            onClick={handleClose}
-                            className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
-                            aria-label="Close letter"
+                        <h1 className="font-semibold font-romantic text-2xl text-center mb-6 text-pink-600">
+                           Here is my wish for you, my little Sain.💝
+                        </h1>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setOpen(true)}
+                            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                            aria-label="Open love letter"
                         >
-                            <X size={24} />
-                        </button>
-
-                        <div className="whitespace-pre-wrap text-green-700 text-lg font-medium text-left min-h-[200px] w-full p-[3px] overflow-hidden">
-                            {typedText}
-                        </div>
-
-                        {!skip && typedText.length < fullText.length && (
-                            <button
-                                onClick={() => setSkip(true)}
-                                className="mt-4 text-sm text-blue-500 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 rounded"
-                            >
-                                Skip typing ⏩
-                            </button>
-                        )}
+                            Open Letter 💌
+                        </motion.button>
                     </motion.div>
                 )}
-            </AnimatePresence>
-            </article>
+
+                <AnimatePresence>
+                    {open && (
+                        <motion.div
+                            key="letter"
+                            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -50, scale: 0.8 }}
+                            transition={{ duration: 0.6, type: 'spring' }}
+                            className="relative w-full max-w-md bg-white/95 p-8 rounded-2xl shadow-lg border border-pink-100"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label="Love letter"
+                        >
+                            <button
+                                onClick={handleClose}
+                                className="absolute top-4 right-4 text-gray-500 hover:text-pink-600 transition-colors"
+                                aria-label="Close letter"
+                            >
+                                <X size={24} />
+                            </button>
+
+                            <div className="whitespace-pre-wrap text-pink-800 text-lg font-medium text-left min-h-[300px] w-full p-4 overflow-y-auto">
+                                {typedText}
+                            </div>
+
+                            {!skip && typedText.length < fullText.length && (
+                                <button
+                                    onClick={() => setSkip(true)}
+                                    className="mt-4 text-sm text-pink-500 hover:text-pink-700 focus:outline-none transition-colors"
+                                >
+                                    Skip typing ⏩
+                                </button>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </motion.article>
         </div>
     );
 }

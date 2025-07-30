@@ -33,7 +33,7 @@ export default function LetSeeItPage() {
                 <div className="z-10 w-full flex justify-center max-w-[280px] sm:max-w-xs transform transition-all hover:scale-105">
                     <AgreeButton
                         redirectUrl="/wish"
-                        text="Ok!"
+                        text="Ha Ha, Ok!"
 
                     />
                 </div>
