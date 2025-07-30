@@ -5,7 +5,7 @@ import HappyBirthdaySection from "@/components/feat/HappyBirthdaySection/HappyBi
 import WishLetter from "@/components/feat/WishLetter/WishLetter";
 import BirthdayGirlPics from "@/components/feat/BirthdayGirlPics/BirthdayGirlPics";
 import ThatsAllSection from "@/components/feat/ThatsAllSection/ThatsAllSection";
-import { motion,AnimatePresence  } from 'framer-motion';
+import { motion  } from 'framer-motion';
 
 
 export default function WishPage() {
