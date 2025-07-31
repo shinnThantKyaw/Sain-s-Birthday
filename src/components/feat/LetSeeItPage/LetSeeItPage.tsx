@@ -15,7 +15,7 @@ export default function LetSeeItPage() {
                 <div className="absolute inset-0 bg-[url('/sparkle-pattern.svg')] bg-[length:100px] sm:bg-[length:200px] opacity-10 mix-blend-overlay pointer-events-none"></div>
 
                 <h1 className="text-center text-2xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-600 leading-tight sm:leading-snug z-10 font-[Pacifico] drop-shadow-md px-2">
-                    {` Ok, let's see it, my little Sain! `}✨
+                    {` Ok, let's see it, my little Sain! `}💖
                 </h1>
 
                 <div className="w-full flex justify-center relative mt-2 sm:mt-4 mb-4 sm:mb-6">
