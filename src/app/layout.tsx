@@ -3,32 +3,45 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "BD wish for my little Sain",
-  description: "A special birthday wish for my little Sain.",
+    title: "BD wish for my little Sain",
+    description: "A special birthday wish for my little Sain.",
+    openGraph: {
+        images: [
+            {
+                url: "/favicon.ico",
+                width: 1200,
+                height: 630,
+                alt: "Site Preview",
+            },
+        ],
+    },
+    icons: {
+        icon: "/favicon.ico", // or /favicon.png
+        // You can also add other icons (optional)
+        // apple: '/apple-icon.png',
+    },
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    return (
+        <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }

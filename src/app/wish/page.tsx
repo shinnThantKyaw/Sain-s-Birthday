@@ -20,8 +20,8 @@ export default function WishPage() {
                 className="w-full flex flex-col items-center gap-16"
             >
                 <HappyBirthdaySection/>
-                <WishLetter/>
                 <BirthdayGirlPics/>
+                <WishLetter/>
                 <ThatsAllSection/>
             </motion.div>
         </div>

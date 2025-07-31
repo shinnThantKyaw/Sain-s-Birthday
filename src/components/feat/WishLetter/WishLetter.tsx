@@ -36,7 +36,7 @@ export default function WishLetter() {
     };
 
     return (
-        <div className="text-center w-[90vw] mt-10">
+        <div className="text-center w-[90vw] ">
             <motion.article
                 className="w-full max-w-md h-auto min-h-[50vh] sm:h-[85vh] bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col justify-center items-center gap-6 sm:gap-8 relative overflow-hidden border-2 border-pink-100"
                 initial={{ opacity: 0, y: 20 }}

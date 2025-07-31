@@ -1,54 +1,23 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 export default function BirthdayGirlPics() {
     const [currentSection, setCurrentSection] = useState(0)
     const pics = ["/pics/Pic1.jpg", "/pics/Pic2.jpg", "/pics/Pic3.jpg", "/pics/Pic4.jpg"]
-    const sliderRef = useRef<HTMLDivElement>(null)
-    const [isDragging, setIsDragging] = useState(false)
-    const [startX, setStartX] = useState(0)
-    const [scrollLeft, setScrollLeft] = useState(0)
+    const [isHovered, setIsHovered] = useState(false)
 
     // Auto-scroll effect
     useEffect(() => {
         const interval = setInterval(() => {
-            if (!isDragging) {
+            if (!isHovered) {
                 setCurrentSection(prev => (prev < pics.length - 1 ? prev + 1 : 0))
             }
         }, 3000) // Change slide every 3 seconds
 
         return () => clearInterval(interval)
-    }, [isDragging, pics.length])
-
-    // Touch and drag events for mobile
-    const handleTouchStart = (e: React.TouchEvent) => {
-        setIsDragging(true)
-        setStartX(e.touches[0].pageX)
-        if (sliderRef.current) {
-            setScrollLeft(sliderRef.current.scrollLeft)
-        }
-    }
-
-    const handleTouchMove = (e: React.TouchEvent) => {
-        if (!isDragging) return
-        if (sliderRef.current) {
-            const x = e.touches[0].pageX
-            const walk = (x - startX) * 2 // Adjust sensitivity
-            sliderRef.current.scrollLeft = scrollLeft - walk
-        }
-    }
-
-    const handleTouchEnd = () => {
-        setIsDragging(false)
-        if (sliderRef.current) {
-            const scrollPosition = sliderRef.current.scrollLeft
-            const slideWidth = sliderRef.current.scrollWidth / pics.length
-            const newSection = Math.round(scrollPosition / slideWidth)
-            setCurrentSection(Math.max(0, Math.min(newSection, pics.length - 1)))
-        }
-    }
+    }, [isHovered, pics.length])
 
     return (
         <motion.section
@@ -57,22 +26,19 @@ export default function BirthdayGirlPics() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
         >
-            <h1 className="font-semibold font-romantic text-2xl text-center  text-pink-600">
+            <h1 className="font-semibold font-romantic text-2xl text-center text-pink-600">
                 Here is my beautiful birthday girl ❤️
             </h1>
 
             <section
                 className="w-full max-w-4xl h-[50vh] md:h-[60vh] rounded-3xl overflow-hidden relative"
-                ref={sliderRef}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
             >
                 <div
-                    className="w-full h-full rounded-3xl shadow-lg flex justify-start transition-transform duration-300 ease-out"
+                    className="w-full h-full rounded-3xl shadow-lg flex transition-transform duration-300 ease-out"
                     style={{
-                        transform: `translateX(-${currentSection * 100}%)`,
-                        touchAction: 'pan-y'
+                        transform: `translateX(-${currentSection * 100}%)`
                     }}
                 >
                     {pics.map((pic, index) => (
