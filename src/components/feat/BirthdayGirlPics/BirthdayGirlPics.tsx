@@ -8,13 +8,13 @@ export default function BirthdayGirlPics() {
     const pics = ["/pics/Pic1.jpg", "/pics/Pic2.jpg", "/pics/Pic3.jpg", "/pics/Pic4.jpg"]
     const [isHovered, setIsHovered] = useState(false)
 
-    // Auto-scroll effect
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (!isHovered) {
                 setCurrentSection(prev => (prev < pics.length - 1 ? prev + 1 : 0))
             }
-        }, 3000) // Change slide every 3 seconds
+        }, 3000)
 
         return () => clearInterval(interval)
     }, [isHovered, pics.length])
@@ -31,12 +31,12 @@ export default function BirthdayGirlPics() {
             </h1>
 
             <section
-                className="w-full max-w-4xl h-[50vh] md:h-[60vh] rounded-3xl overflow-hidden relative"
+                className="w-full lg:w-[40vw] max-w-4xl h-[50vh] md:h-[60vh] rounded-3xl overflow-hidden relative"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <div
-                    className="w-full h-full rounded-3xl shadow-lg flex transition-transform duration-300 ease-out"
+                    className="w-full h-full  rounded-3xl shadow-lg flex transition-transform duration-300 ease-out"
                     style={{
                         transform: `translateX(-${currentSection * 100}%)`
                     }}
@@ -44,12 +44,12 @@ export default function BirthdayGirlPics() {
                     {pics.map((pic, index) => (
                         <div
                             key={index}
-                            className="relative min-w-full h-full border-2 border-pink-100 aspect-video overflow-hidden rounded-xl"
+                            className="relative min-w-full  h-full  border-2 border-pink-100 aspect-video overflow-hidden rounded-xl"
                         >
                             <img
                                 src={pic}
                                 alt={`Birthday girl photo ${index + 1}`}
-                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                className="w-full  h-full object-cover hover:scale-105 transition-transform duration-500"
                                 loading="lazy"
                             />
                         </div>

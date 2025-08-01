@@ -54,9 +54,9 @@ export default function WishLetter() {
     };
 
     return (
-        <div className="text-center w-[90vw] ">
+        <div className="text-center w-[90vw]  flex justify-center ">
             <motion.article
-                className={clsx("w-full max-w-md h-auto min-h-[50vh] sm:h-[85vh] bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl  flex flex-col justify-center items-center gap-6 sm:gap-8 relative overflow-hidden border-2 border-pink-100",open?"p-0":"p-6 sm:p-8")}
+                className={clsx("w-full max-w-md h-auto min-h-[50vh] sm:min-h-[85vh]  bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl  flex flex-col justify-center items-center gap-6 sm:gap-8 relative overflow-hidden border-2 border-pink-100",open?"p-0":"p-6 sm:p-8")}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
@@ -90,7 +90,7 @@ export default function WishLetter() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: -50, scale: 0.8 }}
                             transition={{ duration: 0.6, type: 'spring' }}
-                            className="relative w-full max-w-md bg-white/95 p-4 rounded-2xl shadow-lg border border-pink-100"
+                            className="relative w-full max-w-md h-auto bg-white/95 p-4 rounded-2xl shadow-lg border border-pink-100"
                             role="dialog"
                             aria-modal="true"
                             aria-label="Love letter"
@@ -103,7 +103,7 @@ export default function WishLetter() {
                                 <X size={24} />
                             </button>
 
-                            <div className="whitespace-pre-wrap text-pink-800 text-lg font-medium text-left min-h-[300px] w-full p-4 overflow-y-auto">
+                            <div className="whitespace-pre-wrap text-pink-800 text-lg font-medium text-left min-h-[240px] md:min-h-[70vh] w-full p-4 overflow-y-auto">
                                 {typedText}
                             </div>
 
