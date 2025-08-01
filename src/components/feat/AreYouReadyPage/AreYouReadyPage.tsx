@@ -5,7 +5,7 @@ export default function AreYouReadyPage() {
     return(
         <section className="w-screen h-screen bg-pink-50 flex justify-center items-center">
             <article className="w-[90vw] max-w-md h-[80vh] bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg p-8 flex flex-col justify-center items-center gap-6 relative overflow-hidden">
-                {/* Floral decorations */}
+
                 <div className="absolute -top-10 -left-10 text-pink-200 text-6xl">🌸</div>
                 <div className="absolute -bottom-8 -right-8 text-rose-200 text-7xl">🌹</div>
                 <div className="absolute top-20 right-5 text-pink-200 text-4xl">💮</div>
@@ -27,7 +27,7 @@ export default function AreYouReadyPage() {
 
                <AgreeButton redirectUrl="/lets-see-it" text="Yes!"/>
 
-                {/* Floating hearts */}
+
                 <div className="absolute top-1/4 left-1/4 text-pink-300 text-xl animate-float">💗</div>
                 <div className="absolute bottom-1/3 right-1/3 text-rose-300 text-xl animate-float-delay">💓</div>
             </article>
